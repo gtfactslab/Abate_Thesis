@@ -1,0 +1,96 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=5.714cm,
+height=4cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=-1,
+xmax=3,
+xtick={-1,  0,  1,  2,  3},
+xlabel style={font=\color{white!15!black}},
+xlabel={$x_1$},
+ymin=0,
+ymax=4,
+ytick={0, 2, 4},
+ylabel style={font=\color{white!15!black}},
+ylabel={$x_2$},
+axis background/.style={fill=white},
+axis x line*=bottom,
+axis y line*=left,
+xmajorgrids,
+ymajorgrids
+]
+
+\addplot[area legend, line width=1.2pt, draw=black, fill=red, fill opacity=0.3, forget plot]
+table[row sep=crcr] {%
+x	y\\
+2	1\\
+2.5	1\\
+2.5	1.5\\
+2	1.5\\
+}--cycle;
+
+\addplot[area legend, line width=1.2pt, draw=black, fill=blue, fill opacity=0.3, forget plot]
+table[row sep=crcr] {%
+x	y\\
+-0.544032340976863	1.90023905839862\\
+0.821898642881006	1.90023905839862\\
+0.821898642881006	3.26617004225649\\
+-0.544032340976863	3.26617004225649\\
+}--cycle;
+
+\addplot[area legend, line width=1.2pt, draw=black, fill=red, fill opacity=0.3, forget plot]
+table[row sep=crcr] {%
+x	y\\
+0.239133626928383	2.22324427548393\\
+0.509284779862453	2.64397976788788\\
+0.0885492874585048	2.91413092082195\\
+-0.181601865475565	2.493395428418\\
+}--cycle;
+
+\addplot[area legend, dashed, line width=1.2pt, draw=black, forget plot]
+table[row sep=crcr] {%
+x	y\\
+-0.181601865475565	2.22324427548393\\
+0.509284779862453	2.22324427548393\\
+0.509284779862453	2.91413092082195\\
+-0.181601865475565	2.91413092082195\\
+}--cycle;
+
+\addplot[area legend, draw=black, fill=white, forget plot]
+table[row sep=crcr] {%
+x	y\\
+0.23925396503032	2.22435609526629\\
+0.509540367563017	2.64530191781653\\
+0.0885945450127847	2.91558832034922\\
+-0.181691857519907	2.49464249779899\\
+0.23925396503032	2.22435609526629\\
+}--cycle;
+
+\addplot[area legend, line width=1.2pt, draw=black, fill=green, fill opacity=0.9, forget plot]
+table[row sep=crcr] {%
+x	y\\
+0.23925396503032	2.22435609526629\\
+0.509540367563017	2.64530191781653\\
+0.0885945450127847	2.91558832034922\\
+-0.181691857519907	2.49464249779899\\
+0.23925396503032	2.22435609526629\\
+}--cycle;
+\addplot[only marks, mark=*, mark options={}, mark size=1.5000pt, color=black, fill=black] table[row sep=crcr]{%
+x	y\\
+2	1\\
+2.5	1.5\\
+-0.544032340976863	1.90023905839862\\
+0.821898642881006	3.26617004225649\\
+-0.181601865475565	2.22324427548393\\
+0.509284779862453	2.91413092082195\\
+};
+\end{axis}
+\end{tikzpicture}%

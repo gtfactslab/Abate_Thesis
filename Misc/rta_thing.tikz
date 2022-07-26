@@ -1,0 +1,115 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=5.706cm,
+height=4cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=10,
+ymin=3,
+ymax=7,
+axis background/.style={fill=white},
+axis x line*=bottom,
+axis y line*=left,
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+
+\addplot[area legend, draw=black, fill=blue, fill opacity=0.05]
+table[row sep=crcr] {%
+x	y\\
+0.5	5\\
+2.5	5\\
+2.5	6\\
+0.5	6\\
+}--cycle;
+\addlegendentry{data1}
+
+
+\addplot[area legend, draw=black, fill=blue, fill opacity=0.05]
+table[row sep=crcr] {%
+x	y\\
+4	4.5\\
+6	4.5\\
+6	6.5\\
+4	6.5\\
+}--cycle;
+\addlegendentry{data2}
+
+
+\addplot[area legend, draw=black, fill=blue, fill opacity=0.05]
+table[row sep=crcr] {%
+x	y\\
+7.5	5\\
+9.5	5\\
+9.5	6\\
+7.5	6\\
+}--cycle;
+\addlegendentry{data3}
+
+
+\addplot[area legend, draw=black, fill=blue, fill opacity=0.05]
+table[row sep=crcr] {%
+x	y\\
+4.15	4.65\\
+5.85	4.65\\
+5.85	5.4\\
+4.15	5.4\\
+}--cycle;
+\addlegendentry{data4}
+
+\addplot[-Straight Barb, color=black, line width=1.5pt, point meta={sqrt((\thisrow{u})^2+(\thisrow{v})^2)}, point meta min=0, quiver={u=\thisrow{u}, v=\thisrow{v}, every arrow/.append style={-{Straight Barb[angle'=18.263, scale={10/1000*\pgfplotspointmetatransformed}]}}}]
+ table[row sep=crcr] {%
+x	y	u	v\\
+2.5	5.5	1.5	0\\
+};
+\addlegendentry{data5}
+
+\addplot[-Straight Barb, color=black, line width=1.5pt, point meta={sqrt((\thisrow{u})^2+(\thisrow{v})^2)}, point meta min=0, quiver={u=\thisrow{u}, v=\thisrow{v}, every arrow/.append style={-{Straight Barb[angle'=18.263, scale={10/1000*\pgfplotspointmetatransformed}]}}}]
+ table[row sep=crcr] {%
+x	y	u	v\\
+6	5.5	1.5	0\\
+};
+\addlegendentry{data6}
+
+\addplot[-Straight Barb, color=black, line width=1.5pt, point meta={sqrt((\thisrow{u})^2+(\thisrow{v})^2)}, point meta min=0, quiver={u=\thisrow{u}, v=\thisrow{v}, every arrow/.append style={-{Straight Barb[angle'=18.263, scale={10/1000*\pgfplotspointmetatransformed}]}}}]
+ table[row sep=crcr] {%
+x	y	u	v\\
+8.5	5	0	-1.5\\
+};
+\addlegendentry{data7}
+
+\addplot[-Straight Barb, color=black, line width=1.5pt, point meta={sqrt((\thisrow{u})^2+(\thisrow{v})^2)}, point meta min=0, quiver={u=\thisrow{u}, v=\thisrow{v}, every arrow/.append style={-{Straight Barb[angle'=18.263, scale={10/1000*\pgfplotspointmetatransformed}]}}}]
+ table[row sep=crcr] {%
+x	y	u	v\\
+1.5	3.5	0	1.5\\
+};
+\addlegendentry{data8}
+
+\addplot[-Straight Barb, color=black, line width=1.5pt, point meta={sqrt((\thisrow{u})^2+(\thisrow{v})^2)}, point meta min=0, quiver={u=\thisrow{u}, v=\thisrow{v}, every arrow/.append style={-{Straight Barb[angle'=18.263, scale={10/1000*\pgfplotspointmetatransformed}]}}}]
+ table[row sep=crcr] {%
+x	y	u	v\\
+8.5	3.5	-7	0\\
+};
+\addlegendentry{data9}
+
+\node[right, align=left]
+at (axis cs:0.55,5.65) {Potentially Unsafe};
+\node[right, align=left]
+at (axis cs:0.95,5.35) {Controller};
+\node[right, align=left]
+at (axis cs:4.45,5.15) {Prediction};
+\node[right, align=left]
+at (axis cs:4.4,4.9) {Mechanism};
+\node[right, align=left]
+at (axis cs:4.75,5.9) {RTA};
+\node[right, align=left]
+at (axis cs:8.2,5.5) {Plant};
+\end{axis}
+\end{tikzpicture}%

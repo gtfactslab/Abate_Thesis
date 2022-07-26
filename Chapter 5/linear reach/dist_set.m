@@ -1,0 +1,250 @@
+
+clc; clear all; 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Part 1: Predict Reachable Sets using d
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Intervals Defining Initial Set
+global W
+W = [-1, 1; ...
+      1, 2];
+W_rect = makeRectangle(W);
+
+global B Bp Bm BE
+B = [2, 1; ...
+     1, 2];
+Bp = B.*(B >= 0);
+Bm = B - Bp;
+BE = [Bp, Bm; Bm, Bp];
+
+BW_corn = reshape(BE*W(:), [2, 2]);
+BW_rect = makeRectangle(BW_corn);
+
+
+W_true_corn = inv(B)*BW_corn;
+W_true = inv(B)*BW_rect;
+
+%%%%%%%%%%%%%%%%%%
+% setup figure 2: w space
+%%%%%%%%%%%%%%%%%
+figure(1); clf; 
+hold on; grid on;
+ax = gca;
+%axis([-1, 5, -1, 3])
+%xticks([-1, 0, 1, 2, 3, 4, 5])
+%yticks([-1, 0, 1, 2, 3])
+xlabel('$w_1$','Interpreter','latex')
+ylabel('$w_2$','Interpreter','latex')
+set(gca,'FontSize',16, 'TickLabelInterpreter','latex')
+
+
+% plot inital disturbance set
+patch(W_true(1, :), W_true(2, :), 'r', 'FaceAlpha', .2, 'LineWidth', 1.2)
+scatter(W_true_corn(1, :), W_true_corn(2, :), 'k', 'filled')
+
+% plot inital disturbance set
+patch(W_rect(1, :), W_rect(2, :), 'b', 'FaceAlpha', .2, 'LineWidth', 1.2)
+scatter(W(1, :), W(2, :), 'k', 'filled')
+
+Leg = legend();
+set(Leg,'visible','off')
+
+grid on;
+ax.Layer = 'top';
+
+drawnow
+matlab2tikz('dist_set1.tikz', 'width', '6cm', 'height', '4cm')
+
+%%%%%%%%%%%%%%%%%%
+% setup figure 2: v space
+%%%%%%%%%%%%%%%%%
+figure(2); clf;
+hold on; grid on;
+ax = gca;
+%axis([-1, 5, -1, 3])
+%xticks([-1, 0, 1, 2, 3, 4, 5])
+%yticks([-1, 0, 1, 2, 3])
+xlabel('$v_1$','Interpreter','latex')
+ylabel('$v_2$','Interpreter','latex')
+set(gca,'FontSize',16, 'TickLabelInterpreter','latex')
+
+
+patch(BW_rect(1, :), BW_rect(2, :), 'g', 'FaceAlpha', .2, 'LineWidth', 1.2)
+scatter(BW_corn(1, :), BW_corn(2, :), 'k', 'filled')
+
+
+BW = B*W;
+BW_true = B*W_rect;
+patch(BW_true(1, :), BW_true(2, :), 'b', 'FaceAlpha', .2, 'LineWidth', 1.2)
+scatter(BW(1, :), BW(2, :), 'k', 'filled')
+
+Leg = legend();
+set(Leg,'visible','off')
+
+grid on;
+ax.Layer = 'top';
+
+drawnow
+matlab2tikz('dist_set2.tikz', 'width', '6cm', 'height', '4cm')
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+global A Ap Am 
+A = [-2, 1; ...
+      1, -2];
+Ap = (A - diag(diag(A))).*((A - diag(diag(A))) >= 0) + diag(diag(A));
+Am = A - Ap;
+AE = [Ap, Am; Am, Ap];
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plot Reachable Set
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+x0 = [2;1];
+holder = x0;
+jolder = x0;
+T = 1;
+dt = .01;
+
+T_size=size(0:dt:T, 2);
+
+xE = [x0;x0];
+% Compute Time = 1 Second Reachable Set of System
+% Compute MM approximation of Reachable Set
+for t = 1:T_size
+    t
+    % reachable set computation
+    holder2 = [];
+    jolder2 = [];
+    for i = 1:size(holder, 2)
+        for j = 1:size(W_rect, 2)
+            w_now = W_rect(:, j);
+            x = holder(:, i);
+            x_next = x + dt*dxdt(x, w_now);
+            holder2(:, end + 1) = x_next;
+        end
+    end
+    for i = 1:size(jolder, 2)
+        for j = 1:size(W_true, 2)
+            w_now = W_true(:, j);
+            x = jolder(:, i);
+            x_next = x + dt*dxdt(x, w_now);
+            jolder2(:, end + 1) = x_next;
+        end
+    end
+
+    if t >= 2
+        k = boundary(holder2(1, :)', holder2(2, :)');
+        holder = holder2(:, k);
+    else
+        holder = holder2;
+    end 
+
+    if t >= 2
+        k = boundary(jolder2(1, :)', jolder2(2, :)');
+        jolder = jolder2(:, k);
+    else
+        jolder = jolder2;
+    end 
+
+    xE = xE + dt*E(xE(1:2, 1), xE(3:4, 1));
+end
+% parse
+holder5 = holder(:, 1);
+for i = 2:size(holder, 2)
+    if norm(holder5(:, end) - holder(:, i)) >= .05
+        holder5(:, end + 1) = holder(:, i);
+    end
+end
+x_T = holder5;
+
+jolder5 = jolder(:, 1);
+for i = 2:size(jolder, 2)
+    if norm(jolder5(:, end) - jolder(:, i)) >= .05
+        jolder5(:, end + 1) = jolder(:, i);
+    end
+end
+x_Tj = jolder5;
+
+%%%%%%%%%%%%%%%%%%
+% setup figure 2: v space
+%%%%%%%%%%%%%%%%%
+figure(3); clf;
+hold on; grid on;
+ax = gca;
+%axis([-1, 5, -1, 3])
+%xticks([-1, 0, 1, 2, 3, 4, 5])
+%yticks([-1, 0, 1, 2, 3])
+xlabel('$x_1$','Interpreter','latex')
+ylabel('$x_2$','Interpreter','latex')
+set(gca,'FontSize',16, 'TickLabelInterpreter','latex')
+% Plot Time = 1 Reachable Set RF(1, X0)
+
+
+
+XE_corn = reshape(xE, [2, 2]);
+XE_rect = makeRectangle(XE_corn);
+
+scatter(XE_corn(1, :), XE_corn(2, :), 'k', 'filled')
+patch(XE_rect(1, :), XE_rect(2, :), 'b', ...
+                            'FaceAlpha', .2, ...
+                            'LineWidth', 1.25, ...
+                            'HandleVisibility', 'off');
+
+patch(x_Tj(1, :), x_Tj(2, :), 'g', ...
+                            'FaceAlpha', .5, ...
+                            'LineWidth', 1.25, ...
+                            'HandleVisibility', 'off');
+
+patch(x_T(1, :), x_T(2, :), 'b', ...
+                            'FaceAlpha', .9, ...
+                            'LineWidth', 1.25, ...
+                            'HandleVisibility', 'off');
+
+
+scatter(x0(1), x0(2), 'red', 'filled')
+
+drawnow
+
+Leg = legend();
+set(Leg,'visible','off')
+
+grid on;
+ax.Layer = 'top';
+
+%matlab2tikz('dist_set3.tikz', 'width', '6cm', 'height', '4cm')
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function out = E(x, xh)
+    global W
+    out = [d(x, W(:, 1), xh, W(:, 2)); ...
+           d(xh, W(:, 2), x, W(:, 1))];
+end
+
+function out = d(x, w, xh, wh)
+    global Ap Am Bp Bm
+    out = Ap*x+ Am*xh +Bp*w + Bm*wh;
+end
+
+
+function out = makeRectangle(X0)
+    out = [X0(1, 1), X0(1, 2), X0(1, 2), X0(1, 1); ...
+           X0(2, 1), X0(2, 1), X0(2, 2), X0(2, 2)];
+end
+
+function out = dxdt(x, w)
+    global A B
+    out = A*x+B*w;
+end
+
+
+
+
+
