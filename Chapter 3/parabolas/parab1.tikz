@@ -1,0 +1,82 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=5.714cm,
+height=4cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=0,
+xmax=2,
+xlabel style={font=\color{white!15!black}},
+xlabel={$p_{x}$},
+ymin=0,
+ymax=4,
+ylabel style={font=\color{white!15!black}},
+ylabel={$p_{y}$},
+axis background/.style={fill=white},
+axis x line*=bottom,
+axis y line*=left,
+xmajorgrids,
+ymajorgrids
+]
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0	4\\
+0.05	3.7075\\
+0.1	3.43\\
+0.15	3.1675\\
+0.2	2.92\\
+0.25	2.6875\\
+0.3	2.47\\
+0.35	2.2675\\
+0.4	2.08\\
+0.45	1.9075\\
+0.5	1.75\\
+0.55	1.6075\\
+0.6	1.48\\
+0.65	1.3675\\
+0.7	1.27\\
+0.75	1.1875\\
+0.8	1.12\\
+0.85	1.0675\\
+0.9	1.03\\
+0.95	1.0075\\
+1	1\\
+1.05	1.0075\\
+1.1	1.03\\
+1.15	1.0675\\
+1.2	1.12\\
+1.25	1.1875\\
+1.3	1.27\\
+1.35	1.3675\\
+1.4	1.48\\
+1.45	1.6075\\
+1.5	1.75\\
+1.55	1.9075\\
+1.6	2.08\\
+1.65	2.2675\\
+1.7	2.47\\
+1.75	2.6875\\
+1.8	2.92\\
+1.85	3.1675\\
+1.9	3.43\\
+1.95	3.7075\\
+2	4\\
+};
+\addplot [color=red, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0.75	0.1\\
+1.25	0.1\\
+};
+\addplot[only marks, mark=*, mark options={}, mark size=2.2361pt, color=red, fill=red] table[row sep=crcr]{%
+x	y\\
+1	1\\
+};
+\end{axis}
+\end{tikzpicture}%

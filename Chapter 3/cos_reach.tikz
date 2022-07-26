@@ -1,0 +1,146 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=5.714cm,
+height=4cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=-2.35619449019234,
+xmax=5.49778714378214,
+xtick={-3.14159265358979,-1.5707963267949,0,1.5707963267949,3.14159265358979,4.71238898038469},
+xticklabels={{$-\pi$},{$-\pi/2$},{$0$},{$\pi/2$},{$\pi$},{$3\pi/2$}},
+xlabel style={font=\color{white!15!black}},
+xlabel={$x$},
+ymin=-1,
+ymax=6,
+ytick={-1,0,1,2,3,4,5,6},
+yticklabels={{},{$X$},{$d^{1}(w, \widehat{w})$},{$d^{2}(w, \widehat{w})$},{$d^{3}(w, \widehat{w})$},{$d^{4}(w, \widehat{w})$},{$d^{5}(w, \widehat{w})$},{}},
+axis background/.style={fill=white},
+axis x line*=bottom,
+axis y line*=left,
+xmajorgrids,
+ymajorgrids
+]
+\addplot [color=red, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+-0.5	0\\
+0.5	0\\
+};
+\addplot [color=red, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+-0.5	-0.1\\
+-0.5	0.1\\
+};
+\addplot [color=red, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0.5	-0.1\\
+0.5	0.1\\
+};
+\addplot [color=black!20!green, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0.91562777593548	0\\
+2.50045653055398	0\\
+};
+\addplot [color=white!60!black, dashed, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0.91562777593548	-1\\
+0.91562777593548	6\\
+};
+\addplot [color=white!60!black, dashed, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+2.50045653055398	-1\\
+2.50045653055398	6\\
+};
+\addplot [color=black!20!green, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0.91562777593548	-0.1\\
+0.91562777593548	0.1\\
+};
+\addplot [color=black!20!green, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+2.50045653055398	-0.1\\
+2.50045653055398	0.1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+-1.00894386059493	1\\
+4.27417846061792	1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+-1.00894386059493	0.9\\
+-1.00894386059493	1.1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+4.27417846061792	0.9\\
+4.27417846061792	1.1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+-1.44292290874709	2\\
+4.70815750877004	2\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+-1.44292290874709	1.9\\
+-1.44292290874709	2.1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+4.70815750877004	1.9\\
+4.70815750877004	2.1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+-1.00894386059493	3\\
+4.27417846061792	3\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+-1.00894386059493	2.9\\
+-1.00894386059493	3.1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+4.27417846061792	2.9\\
+4.27417846061792	3.1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+-1.00894386059493	4\\
+2.50199999999995	4\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+-1.00894386059493	3.9\\
+-1.00894386059493	4.1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+2.50199999999995	3.9\\
+2.50199999999995	4.1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0.91562777593548	5\\
+2.50199999999995	5\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0.91562777593548	4.9\\
+0.91562777593548	5.1\\
+};
+\addplot [color=blue, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+2.50199999999995	4.9\\
+2.50199999999995	5.1\\
+};
+\end{axis}
+\end{tikzpicture}%
